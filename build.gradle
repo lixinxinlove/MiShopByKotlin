@@ -3,7 +3,7 @@
 buildscript {
     ext.kotlin_version =  '1.2.71'
     ext.arouter_api_version='1.4.1'
-
+    ext.roomVersion = '2.1.0-alpha03'
 
     repositories {
         google()
