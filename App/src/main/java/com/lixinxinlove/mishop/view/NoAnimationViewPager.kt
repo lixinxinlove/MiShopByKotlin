@@ -1,13 +1,13 @@
 package com.lixinxinlove.mishop.view
 
 import android.content.Context
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 
 /**
  * 去掉动画
  */
-class NoAnimationViewPager : ViewPager {
+class NoAnimationViewPager : androidx.viewpager.widget.ViewPager {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)

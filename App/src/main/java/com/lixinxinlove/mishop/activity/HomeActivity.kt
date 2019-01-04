@@ -1,9 +1,9 @@
 package com.lixinxinlove.mishop.activity
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.fragment.ItemFragment
 import com.lixinxinlove.mishop.R
