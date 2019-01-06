@@ -1,9 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version =  '1.2.71'
-    ext.arouter_api_version='1.4.1'
+    ext.kotlin_version = '1.2.71'
+    ext.arouter_api_version = '1.4.1'
     ext.roomVersion = '2.1.0-alpha03'
+    ext.ok_http_version = '3.10.0'
+    ext.retrofit_version = '2.5.0'
+
 
     repositories {
         google()
