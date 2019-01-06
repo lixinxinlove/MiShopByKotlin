@@ -6,7 +6,7 @@ import com.lixinxinlove.base.fragment.BaseFragment
 /**
  * 个人中心
  */
-class MyselFragment:BaseFragment(){
+class MyselFragment: BaseFragment(){
 
     override fun layoutId(): Int {
         return R.layout.fragment_myself
