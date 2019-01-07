@@ -4,16 +4,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.jaeger.library.StatusBarUtil
-import com.kotlin.base.data.net.RetrofitFactory
-import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.user.R
-import com.kotlin.user.data.protocol.UserInfo
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.user.data.api.UserApi
 import com.lixinxinlove.user.service.UserService
 import com.lixinxinlove.user.service.impl.UserServiceImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -31,24 +27,20 @@ class LoginActivity : BaseActivity() {
 
         btnLogin.setOnClickListener {
 
-            RetrofitFactory.instance.create(UserApi::class.java).login("17090408824","123456")
+            userService.login(etPhone.text.toString(), etPassword.text.toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Consumer<BaseResp<UserInfo>> {
-                    override fun accept(t: BaseResp<UserInfo>?) {
-                        Log.e("lixinxin",t!!.data!!.name)
-                    }
-                })
+                .subscribeBy(
+                    onNext = {
+                        Log.e("lixinxin",it.name)
+                    },
+                    onError = {
 
+                    },
+                    onComplete = {
 
-//            userService.login(etPhone.text.toString(), etPassword.text.toString())
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(object : Consumer<BaseResp<UserInfo>> {
-//                    override fun accept(t: BaseResp<UserInfo>?) {
-//                        Log.e("lixinxin",t!!.data!!.name)
-//                    }
-//                })
+                    })
+
         }
 
     }
@@ -65,4 +57,5 @@ class LoginActivity : BaseActivity() {
         userService = UserServiceImpl()
     }
 }
+
 

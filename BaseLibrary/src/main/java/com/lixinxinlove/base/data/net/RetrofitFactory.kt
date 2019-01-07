@@ -33,9 +33,7 @@ class RetrofitFactory private constructor(){
                 .newBuilder()
                 .addHeader("Content_Type","application/json")
                 .addHeader("charset","UTF-8")
-              //  .addHeader("token",AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                 .build()
-
             chain.proceed(request)
         }
 
@@ -43,7 +41,6 @@ class RetrofitFactory private constructor(){
         retrofit = Retrofit.Builder()
                 .baseUrl(BaseConstant.SERVER_ADDRESS)
                 .addConverterFactory(GsonConverterFactory.create())
-                //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(initClient())
                 .build()
@@ -55,9 +52,8 @@ class RetrofitFactory private constructor(){
     private fun initClient():OkHttpClient{
         return OkHttpClient.Builder()
                 .addInterceptor(initLogInterceptor())
-               // .addInterceptor(interceptor)
-                .connectTimeout(10,TimeUnit.SECONDS)
-                .readTimeout(10,TimeUnit.SECONDS)
+                .connectTimeout(50,TimeUnit.SECONDS)
+                .readTimeout(50,TimeUnit.SECONDS)
                 .build()
     }
 
