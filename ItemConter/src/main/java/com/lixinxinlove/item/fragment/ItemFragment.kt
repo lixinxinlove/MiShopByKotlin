@@ -40,11 +40,9 @@ class ItemFragment : BaseFragment() {
 
 
         rvItemList = rootView.findViewById(R.id.rvItemList)
-
         rvItemList.layoutManager = LinearLayoutManager(context)
 
         var mAdapter = ItemListAdapter(mData!!)
-
         rvItemList.adapter = mAdapter
 
         itemService = ItemServiceImpl()
