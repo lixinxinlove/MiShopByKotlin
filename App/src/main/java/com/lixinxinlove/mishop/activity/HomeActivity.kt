@@ -3,6 +3,7 @@ package com.lixinxinlove.mishop.activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.fragment.ItemFragment
@@ -12,8 +13,9 @@ import com.lixinxinlove.order.fragment.OrderFragment
 import com.lixinxinlove.user.fragment.MyselFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
+@Route( path= "/home/home1")
+class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
     override fun layoutId(): Int {
         return R.layout.activity_home

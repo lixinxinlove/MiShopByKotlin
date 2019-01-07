@@ -19,6 +19,8 @@
                 android:label="@string/title_activity_login"
                 android:theme="@style/AppTheme">
         </activity>
+        <activity android:name="com.lixinxinlove.user.activity.UserInfoActivity">
+        </activity>
     </application>
 
 </manifest>

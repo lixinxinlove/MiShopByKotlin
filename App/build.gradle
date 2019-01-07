@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+    generateStubs = true
+}
+
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.lixinxinlove.mishop"
         minSdkVersion 21
@@ -20,7 +28,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -38,4 +45,8 @@ dependencies {
     implementation project(':ItemConter')
     implementation project(':OrderConter')
     implementation project(':UserConter')
+
+    //ARouter
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
 }
