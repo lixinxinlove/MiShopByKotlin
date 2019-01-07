@@ -16,5 +16,9 @@ class ItemRepository {
         return RetrofitFactory.instance.create(ItemApi::class.java).addItem(title, description, price, stock, imgUrl).convert()
     }
 
+    fun itemList(): Observable<List<ItemInfo>> {
+        return RetrofitFactory.instance.create(ItemApi::class.java).itemList().convert()
+    }
+
 
 }

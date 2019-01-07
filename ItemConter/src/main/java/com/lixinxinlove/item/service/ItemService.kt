@@ -8,4 +8,6 @@ import io.reactivex.Observable
  */
 interface ItemService {
     fun addItem(title: String, description: String, price: Double, stock: Int, imgUrl: String): Observable<ItemInfo>
+
+    fun itemList(): Observable<List<ItemInfo>>
 }

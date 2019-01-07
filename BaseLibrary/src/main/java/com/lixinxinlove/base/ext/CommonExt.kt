@@ -1,14 +1,9 @@
 package com.kotlin.base.ext
 
-import android.view.View
 import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.base.rx.BaseFunc
 import com.kotlin.base.rx.BaseFuncBoolean
-import com.kotlin.base.rx.BaseSubscriber
-
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 
 //Kotlin通用扩展
