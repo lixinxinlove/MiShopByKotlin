@@ -1,10 +1,12 @@
 package com.lixinxinlove.mishop.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kotlin.base.common.AppManager
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.fragment.ItemFragment
 import com.lixinxinlove.mishop.R
@@ -14,7 +16,7 @@ import com.lixinxinlove.user.fragment.MyselFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 
-@Route( path= "/home/home1")
+@Route(path = "/app/home")
 class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
     override fun layoutId(): Int {
@@ -81,6 +83,19 @@ class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
             }
         }
 
+    }
+
+
+    internal var exitTime: Long = 0
+
+    //返回键监听
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - exitTime > 2000) {
+            Toast.makeText(this, "再按一次退应用", Toast.LENGTH_SHORT).show()
+            exitTime = System.currentTimeMillis()
+        } else {
+            AppManager.instance.exitApp(context)
+        }
     }
 
 }

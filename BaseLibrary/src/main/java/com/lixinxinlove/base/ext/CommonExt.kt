@@ -13,10 +13,7 @@ import io.reactivex.Observable
  */
 //fun <T> Observable<T>.excute(subscriber: BaseSubscriber<T>) {
 //    this.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber)
-//
 //}
-
-
 
 
 /*
