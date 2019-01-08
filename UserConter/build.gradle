@@ -58,4 +58,5 @@ dependencies {
     //ARouter
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 
+
 }

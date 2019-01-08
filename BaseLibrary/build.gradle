@@ -44,19 +44,24 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     // glide4
     api 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
     api 'jp.wasabeef:glide-transformations:3.3.0'
     // If you want to use the GPU Filters
     api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
     //ARouter
-    api "com.alibaba:arouter-api:$arouter_api_version"
-    //annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    api "com.alibaba:arouter-api:${arouter_api_version}"
+     //kapt 'com.alibaba:arouter-compiler:1.2.2'
     // RxKotlin and RxAndroid
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
-    api "androidx.room:room-runtime:$roomVersion"
+    api "androidx.room:room-runtime:${roomVersion}"
+    // 配合 rxjava2 使用
+    api 'android.arch.persistence.room:rxjava2:1.1.1'
+    kapt "androidx.room:room-compiler:${roomVersion}"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+
 
     //状态栏设置
     api 'com.jaeger.statusbarutil:library:1.5.1'
@@ -69,5 +74,11 @@ dependencies {
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
 
-    kapt "androidx.room:room-compiler:$roomVersion"
+
+
+
+
+
+
+
 }

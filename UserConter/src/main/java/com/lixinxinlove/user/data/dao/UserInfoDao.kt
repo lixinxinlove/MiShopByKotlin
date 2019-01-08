@@ -17,9 +17,9 @@ interface UserInfoDao {
     fun getUser(id: Int): LiveData<UserInfo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(userInfoList: List<UserInfo>): Int
+    fun insertAll(userInfoList: List<UserInfo>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(userInfo: UserInfo): Int
+    fun insert(userInfo: UserInfo)
 
 }

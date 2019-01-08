@@ -3,6 +3,7 @@ package com.lixinxinlove.user.activity
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.room.Room
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.user.R
@@ -35,20 +36,20 @@ class LoginActivity : BaseActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(onNext = {
-                    Log.e("登录成功", it.name)
+                    Log.e("登录成功", it.toString())
                     val userInfo = it
                     Single.create(SingleOnSubscribe<Int> {
                         Log.e("Single", "create1")
-                        val i = AppDatabase.getInstance(applicationContext).userInfoDao().insert(userInfo)
-                        if (i > 0) {
-                            it.onSuccess(i)
-                        }
+                       // db!!.userInfoDao().insert(userInfo)
+                       //AppDatabase.getInstance(applicationContext).userInfoDao().insert(userInfo)
+                        it.onSuccess(1)
                         Log.e("Single", "create2")
                     }).subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(object : SingleObserver<Int> {
                             override fun onSuccess(t: Int) {
-                                ARouter.getInstance().build("/app/home").navigation()
+                                ARouter.getInstance().build("/app/home")
+                                    .navigation()
                                 finish()
                                 Log.e("Single", "onSuccess")
                             }
@@ -80,6 +81,8 @@ class LoginActivity : BaseActivity() {
         vvLogin.setVideoURI(Uri.parse(uri))
         vvLogin.start()
         userService = UserServiceImpl()
+
+
 
 
     }
