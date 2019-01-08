@@ -57,4 +57,5 @@ dependencies {
     implementation project(':Provider')
     //ARouter
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
 }
