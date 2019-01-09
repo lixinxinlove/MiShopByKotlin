@@ -54,9 +54,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation project(':Provider')
+    api project(':Provider')
     //ARouter
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-
+    kapt "com.alibaba:arouter-compiler:${arouter_compiler_version}"
+    kapt "androidx.room:room-compiler:${roomVersion}"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
 
 }

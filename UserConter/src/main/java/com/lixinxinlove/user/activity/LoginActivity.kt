@@ -3,12 +3,11 @@ package com.lixinxinlove.user.activity
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.room.Room
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.user.R
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.user.data.db.AppDatabase
+import com.lixinxinlove.user.data.db.AppDataBaseHelper
 import com.lixinxinlove.user.service.UserService
 import com.lixinxinlove.user.service.impl.UserServiceImpl
 import io.reactivex.Single
@@ -40,8 +39,7 @@ class LoginActivity : BaseActivity() {
                     val userInfo = it
                     Single.create(SingleOnSubscribe<Int> {
                         Log.e("Single", "create1")
-                       // db!!.userInfoDao().insert(userInfo)
-                       //AppDatabase.getInstance(applicationContext).userInfoDao().insert(userInfo)
+                        AppDataBaseHelper.getInstance(applicationContext).appDataBase.userInfoDao().insert(userInfo)
                         it.onSuccess(1)
                         Log.e("Single", "create2")
                     }).subscribeOn(Schedulers.io())
@@ -81,8 +79,6 @@ class LoginActivity : BaseActivity() {
         vvLogin.setVideoURI(Uri.parse(uri))
         vvLogin.start()
         userService = UserServiceImpl()
-
-
 
 
     }

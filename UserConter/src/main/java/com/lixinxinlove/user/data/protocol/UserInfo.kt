@@ -1,5 +1,6 @@
 package com.kotlin.user.data.protocol
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -11,12 +12,19 @@ import androidx.room.PrimaryKey
 data class UserInfo constructor(
 
     @PrimaryKey(autoGenerate = false)
-    var id: Int=0,
-    var name: String?=null,
-    var gender: Byte?=0,
-    var age: Int?=0,
-    var telphone: String?=null
+    @ColumnInfo(name = "id")
+    var id: Int=0
+
 ){
+
+    @ColumnInfo(name = "name")
+    var name: String?=null
+    @ColumnInfo(name = "gender")
+    var gender: Byte?=0
+    @ColumnInfo(name = "age")
+    var age: Int?=0
+    @ColumnInfo(name = "telphone")
+    var telphone: String?=null
 
     // 必须有公共构造方法
     constructor() : this(0)

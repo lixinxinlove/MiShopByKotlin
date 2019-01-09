@@ -1,36 +1,24 @@
 package com.lixinxinlove.mishop.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.room.Room
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kotlin.base.common.AppManager
-import com.kotlin.user.data.protocol.UserInfo
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.fragment.ItemFragment
 import com.lixinxinlove.mishop.R
 import com.lixinxinlove.mishop.adapter.ViewPagerFragmentAdapter
 import com.lixinxinlove.order.fragment.OrderFragment
-import com.lixinxinlove.user.data.db.AppDatabase
 import com.lixinxinlove.user.fragment.MyselFragment
-import io.reactivex.Single
-import io.reactivex.SingleObserver
-import io.reactivex.SingleOnSubscribe
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home.*
 
 
 @Route(path = "/app/home")
 class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
-    private var db:AppDatabase? = null
 
     override fun layoutId(): Int {
         return R.layout.activity_home
@@ -66,32 +54,6 @@ class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         adapter = ViewPagerFragmentAdapter(supportFragmentManager, mData)
 
         homeViewPager.adapter = adapter
-
-        db=  Room.databaseBuilder(applicationContext, AppDatabase::class.java, "mishop").fallbackToDestructiveMigration().build()
-
-        Single.create(SingleOnSubscribe<Int> {
-            Log.e("Single", "create1")
-            val userInfo= UserInfo(1,"1111",1,1,"123456789")
-            db!!.userInfoDao().insert(userInfo)
-           // AppDatabase.getInstance(applicationContext).userInfoDao().insert(userInfo)
-            it.onSuccess(1)
-            Log.e("Single", "create2")
-        }).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<Int> {
-                override fun onSuccess(t: Int) {
-                    Log.e("Single", "onSuccess")
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                    Log.e("Single", "onSubscribe")
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.e("Single", "onError")
-                }
-            })
-
 
     }
 
