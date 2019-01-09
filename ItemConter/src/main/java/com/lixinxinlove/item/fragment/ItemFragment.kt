@@ -2,11 +2,16 @@ package com.lixinxinlove.item.fragment
 
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.lixinxinlove.base.fragment.BaseFragment
 import com.lixinxinlove.item.R
+import com.lixinxinlove.item.activity.ItemDetailsActivity
 import com.lixinxinlove.item.adapter.ItemListAdapter
 import com.lixinxinlove.item.data.protocol.ItemInfo
 import com.lixinxinlove.item.service.ItemService
@@ -19,11 +24,13 @@ import io.reactivex.schedulers.Schedulers
 /**
  * 首页商品列表
  */
-class ItemFragment : BaseFragment() {
+class ItemFragment : BaseFragment(), BaseQuickAdapter.OnItemClickListener {
 
     private lateinit var itemService: ItemService
 
     private lateinit var rvItemList: RecyclerView
+
+    private lateinit var mAdapter: ItemListAdapter
 
     private var mData: List<ItemInfo>? = listOf()
 
@@ -32,6 +39,7 @@ class ItemFragment : BaseFragment() {
     }
 
     override fun listener() {
+        mAdapter.setOnItemClickListener(this)
     }
 
 
@@ -42,7 +50,9 @@ class ItemFragment : BaseFragment() {
         rvItemList = rootView.findViewById(R.id.rvItemList)
         rvItemList.layoutManager = LinearLayoutManager(context)
 
-        var mAdapter = ItemListAdapter(mData!!)
+        mAdapter = ItemListAdapter(mData!!)
+
+
         rvItemList.adapter = mAdapter
 
         itemService = ItemServiceImpl()
@@ -61,9 +71,13 @@ class ItemFragment : BaseFragment() {
 
                     Log.e("ItemFragment", "onComplete")
                 })
-
-
     }
+
+
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        startActivity(Intent(context, ItemDetailsActivity::class.java))
+    }
+
 }
 
 

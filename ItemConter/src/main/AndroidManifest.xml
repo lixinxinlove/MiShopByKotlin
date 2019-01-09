@@ -5,6 +5,8 @@
     <application>
         <activity android:name=".activity.AddItemActivity">
         </activity>
+        <activity android:name=".activity.ItemDetailsActivity">
+        </activity>
     </application>
 
 </manifest>
