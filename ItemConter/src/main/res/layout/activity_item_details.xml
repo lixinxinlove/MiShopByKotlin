@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.ItemDetailsActivity">
+        android:layout_height="match_parent">
+
+    <ImageView
+            android:id="@+id/ivItemImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            style="@style/MatchWrap.Horizontal">
+        <TextView style="@style/WrapWrap" android:text="商品名称："/>
+        <TextView style="@style/WrapWrap" android:id="@+id/tvTitle"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            style="@style/MatchWrap.Horizontal">
+        <TextView style="@style/WrapWrap" android:text="商品描述："/>
+        <TextView style="@style/WrapWrap" android:id="@+id/tvDescription"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            style="@style/MatchWrap.Horizontal">
+        <TextView style="@style/WrapWrap" android:text="商品价格："/>
+        <TextView style="@style/WrapWrap" android:id="@+id/tvPrice"/>
+    </LinearLayout>
 
 
+    <Space android:layout_weight="1" android:layout_width="1dp" android:layout_height="0dp"/>
 
-    <TextView
-            android:text="商品详情"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+                android:text="加入购物车"
+                android:id="@+id/btnAddCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:text="立即购买"
+                android:id="@+id/btnBug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

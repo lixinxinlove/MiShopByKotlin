@@ -55,6 +55,7 @@ class ItemFragment : BaseFragment(), BaseQuickAdapter.OnItemClickListener {
         rvItemList.adapter = mAdapter
 
         itemService = ItemServiceImpl()
+        mProgressLoading.showLoading()
         itemService.itemList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -65,9 +66,10 @@ class ItemFragment : BaseFragment(), BaseQuickAdapter.OnItemClickListener {
                 },
                 onError = {
                     Log.e("ItemFragment", "onError")
+                    mProgressLoading.hideLoading()
                 },
                 onComplete = {
-
+                    mProgressLoading.hideLoading()
                     Log.e("ItemFragment", "onComplete")
                 })
     }
