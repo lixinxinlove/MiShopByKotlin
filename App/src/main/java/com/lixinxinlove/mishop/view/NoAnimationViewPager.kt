@@ -14,6 +14,7 @@ class NoAnimationViewPager : ViewPager {
 
     override fun setCurrentItem(item: Int) {
         super.setCurrentItem(item, false)
+        offscreenPageLimit = 2
     }
 
 }
