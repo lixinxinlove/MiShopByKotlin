@@ -2,7 +2,6 @@ package com.lixinxinlove.item.fragment
 
 
 import android.annotation.SuppressLint
-import android.content.ClipData
 import android.content.Intent
 import android.util.Log
 import android.view.View
@@ -75,7 +74,9 @@ class ItemFragment : BaseFragment(), BaseQuickAdapter.OnItemClickListener {
 
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        startActivity(Intent(context, ItemDetailsActivity::class.java))
+        val intent=Intent(context,ItemDetailsActivity::class.java)
+        intent!!.putExtra("id",mAdapter.data[position].id)
+        startActivity(intent)
     }
 
 }

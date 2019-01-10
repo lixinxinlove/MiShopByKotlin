@@ -22,11 +22,14 @@ interface ItemApi {
     ): Observable<BaseResp<ItemInfo>>
 
 
-
-
     @Headers("contentType: application/x-www-form-urlencoded")
     @GET("item/list")
     fun itemList(): Observable<BaseResp<List<ItemInfo>>>
+
+
+    @Headers("contentType: application/x-www-form-urlencoded")
+    @GET("item/get")
+    fun item(@Query(value = "id") id: Int): Observable<BaseResp<ItemInfo>>
 
 
 }

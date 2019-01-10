@@ -1,10 +1,20 @@
 package com.lixinxinlove.item.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.R
+import com.lixinxinlove.item.service.ItemService
+import com.lixinxinlove.item.service.impl.ItemServiceImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 
 class ItemDetailsActivity : BaseActivity() {
+
+    private lateinit var itemService: ItemService
+
     override fun layoutId(): Int {
         return R.layout.activity_item_details
     }
@@ -13,8 +23,28 @@ class ItemDetailsActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val id = intent.getIntExtra("id", 0)
+        itemService = ItemServiceImpl()
+        mProgressLoading.showLoading()
+        itemService.item(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    Log.e("ItemDetailsActivity", "onNext")
+                    Log.e("ItemDetailsActivity", it.toString())
 
+                },
+                onError = {
+                    Log.e("ItemDetailsActivity", "onError")
+                    mProgressLoading.hideLoading()
+                },
+                onComplete = {
+                    mProgressLoading.hideLoading()
+                    Log.e("ItemDetailsActivity", "onComplete")
+                })
     }
 }

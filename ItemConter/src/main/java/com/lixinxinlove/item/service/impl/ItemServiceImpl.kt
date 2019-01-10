@@ -11,6 +11,7 @@ import io.reactivex.Observable
 class ItemServiceImpl : ItemService {
 
 
+
     var itemRepository = ItemRepository()
 
     override fun addItem(
@@ -25,6 +26,10 @@ class ItemServiceImpl : ItemService {
 
     override fun itemList(): Observable<List<ItemInfo>> {
         return itemRepository.itemList()
+    }
+
+    override fun item(id: Int): Observable<ItemInfo> {
+        return itemRepository.item(id)
     }
 
 }

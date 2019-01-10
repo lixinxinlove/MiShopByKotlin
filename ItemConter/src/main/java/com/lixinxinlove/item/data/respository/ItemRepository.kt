@@ -13,11 +13,24 @@ class ItemRepository {
       添加商品
      */
     fun addItem(title: String, description: String, price: Double, stock: Int, imgUrl: String): Observable<ItemInfo> {
-        return RetrofitFactory.instance.create(ItemApi::class.java).addItem(title, description, price, stock, imgUrl).convert()
+        return RetrofitFactory.instance.create(ItemApi::class.java).addItem(title, description, price, stock, imgUrl)
+            .convert()
     }
 
+
+    /**
+     * 商品列表
+     */
     fun itemList(): Observable<List<ItemInfo>> {
         return RetrofitFactory.instance.create(ItemApi::class.java).itemList().convert()
+    }
+
+
+    /**
+     * 商品详情
+     */
+    fun item(id: Int): Observable<ItemInfo> {
+        return RetrofitFactory.instance.create(ItemApi::class.java).item(id).convert()
     }
 
 
