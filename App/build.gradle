@@ -45,6 +45,7 @@ dependencies {
     implementation project(':ItemConter')
     implementation project(':OrderConter')
     implementation project(':UserConter')
+    implementation project(':PayConter')
 
     //ARouter
     kapt "com.alibaba:arouter-compiler:${arouter_compiler_version}"

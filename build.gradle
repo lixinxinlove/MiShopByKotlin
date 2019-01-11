@@ -20,6 +20,10 @@ buildscript {
 
 allprojects {
     repositories {
+        // 添加下面的内容
+        flatDir {
+            dirs '../ItemConter/libs','libs'
+        }
         google()
         jcenter()
         maven { url "https://jitpack.io" }
