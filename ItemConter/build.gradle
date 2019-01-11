@@ -47,6 +47,5 @@ dependencies {
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
 
-    // 支付宝 SDK AAR 包所需的配置
-    implementation (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+
 }

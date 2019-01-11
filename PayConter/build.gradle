@@ -2,7 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+    generateStubs = true
+}
 android {
     compileSdkVersion 28
 
@@ -40,5 +45,9 @@ dependencies {
     kapt "androidx.room:room-compiler:${roomVersion}"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+
+    // 支付宝 SDK AAR 包所需的配置
+    implementation (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
 
 }

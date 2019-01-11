@@ -22,7 +22,7 @@ allprojects {
     repositories {
         // 添加下面的内容
         flatDir {
-            dirs '../ItemConter/libs','libs'
+            dirs '../PayConter/libs','libs'
         }
         google()
         jcenter()
