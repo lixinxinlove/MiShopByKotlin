@@ -15,7 +15,12 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_item_details.*
 
+/**
+ * 商品详情
+ */
 class ItemDetailsActivity : BaseActivity() {
+
+    var id: Int = 0
 
     private lateinit var itemService: ItemService
 
@@ -25,12 +30,9 @@ class ItemDetailsActivity : BaseActivity() {
 
     override fun listener() {
 
-
         btnBuy.setOnClickListener {
-            ARouter.getInstance().build("/pay/item")
-                .navigation()
+            ARouter.getInstance().build("/order/details").withInt("id", id).navigation()
         }
-
 
     }
 
@@ -39,7 +41,7 @@ class ItemDetailsActivity : BaseActivity() {
         StatusBarUtil.setLightMode(this)
         StatusBarUtil.setTransparent(this)
         super.onCreate(savedInstanceState)
-        val id = intent.getIntExtra("id", 0)
+        id = intent.getIntExtra("id", 0)
         itemService = ItemServiceImpl()
         mProgressLoading.showLoading()
         itemService.item(id)

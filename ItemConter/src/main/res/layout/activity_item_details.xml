@@ -40,7 +40,6 @@
     <Space android:layout_weight="1" android:layout_width="1dp" android:layout_height="0dp"/>
 
     <LinearLayout
-            android:fitsSystemWindows="true"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="45dp">

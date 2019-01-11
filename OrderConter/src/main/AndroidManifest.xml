@@ -1,2 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.lixinxinlove.order"/>
+          package="com.lixinxinlove.order">
+
+    <application>
+        <activity android:name=".activity.OrderDetailsActivity">
+        </activity>
+    </application>
+
+</manifest>
