@@ -7,4 +7,19 @@
         android:layout_height="match_parent"
         tools:context=".activity.PayActivity">
 
+
+    <Button
+            android:onClick="authV2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btnAuto" android:text="授权"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <Button
+            android:onClick="pay"
+            app:layout_constraintTop_toBottomOf="@+id/btnAuto"
+            android:id="@+id/btnPay" android:text="支付"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

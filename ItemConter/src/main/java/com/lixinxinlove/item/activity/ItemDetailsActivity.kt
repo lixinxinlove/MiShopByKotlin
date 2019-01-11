@@ -3,6 +3,7 @@ package com.lixinxinlove.item.activity
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import com.alibaba.android.arouter.launcher.ARouter
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.base.utils.GlideUtils
 import com.lixinxinlove.base.activity.BaseActivity
@@ -23,6 +24,13 @@ class ItemDetailsActivity : BaseActivity() {
     }
 
     override fun listener() {
+
+
+        btnBuy.setOnClickListener {
+            ARouter.getInstance().build("/pay/item")
+                .navigation()
+        }
+
 
     }
 
