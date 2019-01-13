@@ -3,19 +3,19 @@ package com.lixinxinlove.user.data.db
 import android.content.Context
 import androidx.room.Room
 
-class AppDataBaseHelper constructor(context: Context) {
+class UserDataBaseHelper constructor(context: Context) {
 
     val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "db_room").build()!!
 
     companion object {
         @Volatile
-        var INSTANCE: AppDataBaseHelper? = null
+        var INSTANCE: UserDataBaseHelper? = null
 
-        fun getInstance(context: Context): AppDataBaseHelper {
+        fun getInstance(context: Context): UserDataBaseHelper {
             if (INSTANCE == null) {
-                synchronized(AppDataBaseHelper::class) {
+                synchronized(UserDataBaseHelper::class) {
                     if (INSTANCE == null) {
-                        INSTANCE = AppDataBaseHelper(context.applicationContext)
+                        INSTANCE = UserDataBaseHelper(context.applicationContext)
                     }
                 }
             }

@@ -6,15 +6,13 @@ import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.user.R
+import com.kotlin.user.data.protocol.UserInfo
 import com.lixinxinlove.base.activity.BaseActivity
-import com.lixinxinlove.user.data.db.AppDataBaseHelper
+import com.lixinxinlove.user.data.db.UserDataBaseHelper
 import com.lixinxinlove.user.service.UserService
 import com.lixinxinlove.user.service.impl.UserServiceImpl
-import io.reactivex.Single
-import io.reactivex.SingleObserver
-import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Function
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
@@ -32,40 +30,29 @@ class LoginActivity : BaseActivity() {
         btnLogin.setOnClickListener {
             mProgressLoading.showLoading()
             userService.login(etPhone.text.toString(), etPassword.text.toString())
+                .map(object : Function<UserInfo, UserInfo>{
+                    override fun apply(t: UserInfo): UserInfo {
+                        UserDataBaseHelper.getInstance(applicationContext).appDataBase.userInfoDao().insert(t)
+                        return t
+                    }
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onNext = {
-                    Log.e("登录成功", it.toString())
-                    val userInfo = it
-                    Single.create(SingleOnSubscribe<Int> {
-                        Log.e("Single", "create1")
-                        AppDataBaseHelper.getInstance(applicationContext).appDataBase.userInfoDao().insert(userInfo)
-                        it.onSuccess(1)
-                        Log.e("Single", "create2")
-                    }).subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(object : SingleObserver<Int> {
-                            override fun onSuccess(t: Int) {
-                                ARouter.getInstance().build("/app/home")
-                                    .navigation()
-                                finish()
-                                Log.e("Single", "onSuccess")
-                            }
+                .subscribeBy(
+                    onNext = {
+                        val userInfo = it
+                        Log.e("登录成功", userInfo.toString())
+                        Log.e("Single", "onSuccess")
+                        ARouter.getInstance().build("/app/home").navigation()
+                        finish()
 
-                            override fun onSubscribe(d: Disposable) {
-                                Log.e("Single", "onSubscribe")
-                            }
-
-                            override fun onError(e: Throwable) {
-                                Log.e("Single", "onError")
-                            }
-                        })
-                }, onError = {
-                    mProgressLoading.hideLoading()
-                    Log.e("网络异常", "onError")
-                }, onComplete = {
-                    mProgressLoading.hideLoading()
-                })
+                    },
+                    onError = {
+                        mProgressLoading.hideLoading()
+                        Log.e("网络异常", "onError")
+                    }, onComplete = {
+                        mProgressLoading.hideLoading()
+                    })
         }
     }
 
@@ -79,8 +66,6 @@ class LoginActivity : BaseActivity() {
         vvLogin.setVideoURI(Uri.parse(uri))
         vvLogin.start()
         userService = UserServiceImpl()
-
-
     }
 }
 
