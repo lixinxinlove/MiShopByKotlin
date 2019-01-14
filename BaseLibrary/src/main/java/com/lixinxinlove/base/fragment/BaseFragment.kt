@@ -18,12 +18,14 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
 
     abstract fun layoutId(): Int
     abstract fun listener()
+    abstract fun findView()
     abstract fun _onCreateView()
     lateinit var mProgressLoading: ProgressLoading
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(layoutId(), container, false)
         mProgressLoading = ProgressLoading.create(mContext)
+        findView()
         _onCreateView()
         listener()
         return rootView

@@ -51,4 +51,13 @@
             android:layout_height="wrap_content"/>
 
 
+    <Button
+            android:onClick="logout"
+            android:text="退出登录"
+            android:layout_margin="16dp"
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
 </LinearLayout>

@@ -1,10 +1,6 @@
 package com.lixinxinlove.user.data.dao
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.kotlin.user.data.protocol.UserInfo
 import io.reactivex.Single
 
@@ -22,5 +18,11 @@ interface UserInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(userInfo: UserInfo)
+
+    @Delete
+    fun deleteUser(userInfo: UserInfo):Single<Int>
+
+    @Delete
+    fun deleteAllUser(users: List<UserInfo>):Single<Int>
 
 }

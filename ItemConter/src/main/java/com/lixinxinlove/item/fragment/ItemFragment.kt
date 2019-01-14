@@ -36,7 +36,8 @@ class ItemFragment : BaseFragment(), BaseQuickAdapter.OnItemClickListener {
     override fun layoutId(): Int {
         return R.layout.fragment_item
     }
-
+    override fun findView() {
+    }
     override fun listener() {
         mAdapter.setOnItemClickListener(this)
     }

@@ -15,12 +15,14 @@ class OrderFragment : BaseFragment() {
         return R.layout.fragment_order
     }
 
+    override fun findView() {
+    }
+
     override fun listener() {
     }
 
     override fun _onCreateView() {
     }
-
 
 
 }

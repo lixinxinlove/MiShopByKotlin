@@ -30,9 +30,13 @@ class App : BaseApplication() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<List<UserInfo>> {
                 override fun onSuccess(t: List<UserInfo>) {
-                    user = t[0]
-                    isLogin = true
-                    Log.e("App",user.toString())
+                    if (t.isNotEmpty()) {
+                        user = t[0]
+                        isLogin = true
+                        Log.e("App", user.toString())
+                    } else {
+                        isLogin = false
+                    }
                 }
 
                 override fun onSubscribe(d: Disposable) {
