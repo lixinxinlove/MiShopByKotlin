@@ -12,7 +12,7 @@ import com.lixinxinlove.item.fragment.ItemFragment
 import com.lixinxinlove.mishop.R
 import com.lixinxinlove.mishop.adapter.ViewPagerFragmentAdapter
 import com.lixinxinlove.order.fragment.OrderFragment
-import com.lixinxinlove.user.fragment.MyselFragment
+import com.lixinxinlove.user.fragment.MyselfFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -49,7 +49,7 @@ class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mData = arrayListOf(ItemFragment(), OrderFragment(), MyselFragment())
+        mData = arrayListOf(ItemFragment(), OrderFragment(), MyselfFragment())
 
         adapter = ViewPagerFragmentAdapter(supportFragmentManager, mData)
 
