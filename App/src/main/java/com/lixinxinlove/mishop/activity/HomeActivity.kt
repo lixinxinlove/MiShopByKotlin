@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jaeger.library.StatusBarUtil
 import com.kotlin.base.common.AppManager
 import com.lixinxinlove.base.activity.BaseActivity
 import com.lixinxinlove.item.fragment.ItemFragment
 import com.lixinxinlove.mishop.R
 import com.lixinxinlove.mishop.adapter.ViewPagerFragmentAdapter
 import com.lixinxinlove.order.fragment.OrderFragment
-import com.lixinxinlove.user.fragment.MyselFragment
+import com.lixinxinlove.user.fragment.MyselfFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -47,9 +48,11 @@ class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        StatusBarUtil.setLightMode(this)
+        StatusBarUtil.setTransparent(this)
         super.onCreate(savedInstanceState)
 
-        mData = arrayListOf(ItemFragment(), OrderFragment(), MyselFragment())
+        mData = arrayListOf(ItemFragment(), OrderFragment(), MyselfFragment())
 
         adapter = ViewPagerFragmentAdapter(supportFragmentManager, mData)
 
