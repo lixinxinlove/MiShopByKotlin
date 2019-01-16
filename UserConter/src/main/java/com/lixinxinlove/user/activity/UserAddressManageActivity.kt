@@ -1,6 +1,7 @@
 package com.lixinxinlove.user.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,13 +25,21 @@ class UserAddressManageActivity : BaseActivity() {
 
     var mAdapter: UserAddressAdapter? = null
 
-    lateinit var userService:UserService
+
+    lateinit var userService: UserService
 
     override fun layoutId(): Int {
         return R.layout.activity_user_address_manage
     }
 
     override fun listener() {
+        mSwipeRefreshLayout.setOnRefreshListener {
+            getData()
+        }
+
+        btnAdd.setOnClickListener {
+            startActivity(Intent(context, AddAddressActivity::class.java))
+        }
 
     }
 
@@ -42,7 +51,14 @@ class UserAddressManageActivity : BaseActivity() {
         mRecyclerView.adapter = mAdapter
 
         userService = UserServiceImpl()
-        mProgressLoading.showLoading()
+        // mProgressLoading.showLoading()
+        getData()
+    }
+
+
+    @SuppressLint("CheckResult")
+    private fun getData() {
+        mSwipeRefreshLayout.isRefreshing = true
         userService.addressList(1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -50,13 +66,16 @@ class UserAddressManageActivity : BaseActivity() {
                 onNext = {
                     Log.e("UserAddressManage", "onNext")
                     mAdapter!!.setNewData(it)
+                    Log.e("onNext", "${it.size}")
                 },
                 onError = {
                     Log.e("UserAddressManage", "onError")
                     mProgressLoading.hideLoading()
+                    mSwipeRefreshLayout.isRefreshing = false
                 },
                 onComplete = {
                     mProgressLoading.hideLoading()
+                    mSwipeRefreshLayout.isRefreshing = false
                     Log.e("UserAddressManage", "onComplete")
                 })
 
