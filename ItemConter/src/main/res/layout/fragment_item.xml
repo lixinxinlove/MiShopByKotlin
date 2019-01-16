@@ -5,6 +5,7 @@
               tools:context=".fragment.ItemFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:fitsSystemWindows="true"
             android:id="@+id/SRLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

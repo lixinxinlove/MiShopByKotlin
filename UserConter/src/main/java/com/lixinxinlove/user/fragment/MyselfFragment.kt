@@ -7,6 +7,7 @@ import com.kotlin.user.R
 import com.kotlin.user.data.protocol.UserInfo
 import com.lixinxinlove.base.fragment.BaseFragment
 import com.lixinxinlove.user.activity.LoginActivity
+import com.lixinxinlove.user.activity.UserAddressManageActivity
 import com.lixinxinlove.user.data.db.UserDataBaseHelper
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,6 +24,7 @@ class MyselfFragment : BaseFragment() {
     private lateinit var user: UserInfo
 
     private lateinit var btnLogout: Button
+    private lateinit var btnUserAddress: Button
 
 
     override fun layoutId(): Int {
@@ -31,12 +33,18 @@ class MyselfFragment : BaseFragment() {
 
     override fun findView() {
         btnLogout = rootView.findViewById(R.id.btnLogout)
+        btnUserAddress = rootView.findViewById(R.id.btnUserAddress)
     }
 
     override fun listener() {
         btnLogout.setOnClickListener {
             logout()
         }
+
+        btnUserAddress.setOnClickListener {
+            startActivity(Intent(mContext, UserAddressManageActivity::class.java))
+        }
+
     }
 
 

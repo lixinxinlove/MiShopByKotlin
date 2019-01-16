@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="com.lixinxinlove.user.activity.UserInfoActivity">
         </activity>
+        <activity android:name="com.lixinxinlove.user.activity.UserAddressManageActivity">
+        </activity>
     </application>
 
 </manifest>

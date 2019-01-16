@@ -50,7 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-
     <Button
             android:onClick="logout"
             android:text="退出登录"
@@ -58,6 +57,13 @@
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <Button
+            android:text="地址管理"
+            android:layout_margin="16dp"
+            android:id="@+id/btnUserAddress"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
 
 
 </LinearLayout>
