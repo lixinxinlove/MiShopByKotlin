@@ -15,4 +15,6 @@ interface UserService {
 
     fun addressList(userId: Int): Observable<List<UserAddress>>
 
+    fun add(userAddress: UserAddress): Observable<Int>
+
 }

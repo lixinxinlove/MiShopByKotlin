@@ -1,10 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.lixinxinlove.user.activity.AddAddressActivity">
+        android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.lixinxinlove.user.activity.AddAddressActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etName"
+                    android:hint="请输入姓名"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etPhone"
+                    android:hint="请输入手机号"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etMobile"
+                    android:hint="请输入电话"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etProvince"
+                    android:hint="省"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etCity"
+                    android:hint="市"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etDistrict"
+                    android:hint="乡/区"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etAddress"
+                    android:hint="详细地址"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="12sp"
+                    android:id="@+id/etZip"
+                    android:hint="邮编"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:id="@+id/btnAddAddress"
+                android:text="添加"
+                android:layout_height="48dp"/>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

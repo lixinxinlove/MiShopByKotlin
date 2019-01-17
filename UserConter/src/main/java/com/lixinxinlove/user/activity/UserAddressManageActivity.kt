@@ -1,6 +1,7 @@
 package com.lixinxinlove.user.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -38,10 +39,25 @@ class UserAddressManageActivity : BaseActivity() {
         }
 
         btnAdd.setOnClickListener {
-            startActivity(Intent(context, AddAddressActivity::class.java))
+            startActivityForResult(Intent(context, AddAddressActivity::class.java), 100)
         }
 
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+        when (requestCode) {
+            100 -> {
+                getData()
+            }
+        }
+    }
+
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {

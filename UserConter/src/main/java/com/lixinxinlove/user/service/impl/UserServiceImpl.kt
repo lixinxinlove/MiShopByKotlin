@@ -20,4 +20,9 @@ class UserServiceImpl : UserService {
         return userRepository.addressList(userId)
     }
 
+    override fun add(userAddress: UserAddress): Observable<Int> {
+        return userRepository.add(userAddress)
+    }
+
+
 }

@@ -27,4 +27,9 @@ interface UserApi {
     fun addressList(@Query(value = "userId") userId: Int): Observable<BaseResp<List<UserAddress>>>
 
 
+   // @FormUrlEncoded
+    @Headers("contentType: application/x-www-form-urlencoded","contentType:application/json")
+    @POST("address/add")
+    fun add(@Body userAddress: UserAddress): Observable<BaseResp<Int>>
+
 }

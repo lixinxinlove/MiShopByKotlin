@@ -24,5 +24,9 @@ class UserRepository {
         return RetrofitFactory.instance.create(UserApi::class.java).addressList(userId).convert()
     }
 
+    fun add(userAddress: UserAddress): Observable<Int> {
+        return RetrofitFactory.instance.create(UserApi::class.java).add(userAddress).convert()
+    }
+
 
 }
